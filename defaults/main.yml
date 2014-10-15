@@ -1,0 +1,11 @@
+---
+# defaults file for proxy
+
+#proxy_http_proxy: 'http://myuser:mypassword@px01.example.com:3128'
+#proxy_ftp_proxy: 'http://proxy.example.com:8080'
+#proxy_https_proxy: 'http://px01.example.com:3128'
+#proxy_no_proxy: 'example.com,192.168.122.1'
+#proxy_yum_proxy: 'http://proxysrv:8080'
+#proxy_yum_proxy_username: 'myuser'
+#proxy_yum_proxy_password: 'mypassword'
+
