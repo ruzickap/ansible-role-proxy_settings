@@ -43,4 +43,4 @@ BSD
 
 ## Author Information
 
-This role was created in 2014 by [Petr Ruzicka] <petr.ruzicka@gmail.com>
+This role was created in 2014 by <petr.ruzicka@gmail.com>
