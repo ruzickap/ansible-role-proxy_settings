@@ -10,17 +10,17 @@
   tags: proxy
 
 - name: Configure proxy for yum
-  lineinfile: dest=/etc/yum.conf line="proxy={{ proxy_yum_proxy }}"
+  lineinfile: dest=/etc/yum.conf regexp='^proxy' line="proxy={{ proxy_yum_proxy }}"
   tags: proxy
   when: ansible_os_family == 'RedHat' and proxy_yum_proxy is defined
 
 - name: Configure proxy_username for yum
-  lineinfile: dest=/etc/yum.conf line="proxy_username={{ proxy_yum_proxy_username }}"
+  lineinfile: dest=/etc/yum.conf regexp='^proxy_username' line="proxy_username={{ proxy_yum_proxy_username }}"
   tags: proxy
   when: ansible_os_family == 'RedHat' and yum_proxy_username is defined
 
 - name: Configure proxy_password for yum
-  lineinfile: dest=/etc/yum.conf line="proxy_password={{ proxy_yum_proxy_password }}"
+  lineinfile: dest=/etc/yum.conf regexp='^proxy_password' line="proxy_password={{ proxy_yum_proxy_password }}"
   tags: proxy
   when: ansible_os_family == 'RedHat' and yum_proxy_password is defined
 
