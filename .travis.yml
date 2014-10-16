@@ -23,8 +23,8 @@ script:
   - >
     ansible-playbook -i tests/inventory tests/test.yml --connection=local --sudo
     | grep -q 'changed=0.*failed=0'
-    && (echo 'Idempotence test: pass' && exit 0)
-    || (echo 'Idempotence test: fail' && exit 1)
+    && (echo '*** Idempotence test: pass' && exit 0)
+    || (echo '*** Idempotence test: fail' && exit 1)
 
   # Show modified files
   - cat /etc/apt/apt.conf.d/80proxy  
@@ -32,7 +32,7 @@ script:
   - cat /etc/environment
     
   # Check if the wget is using the proxy form the variables
-  - /bin/bash -l -c '/usr/bin/wget http://www.google.com/' 2>&1 | grep 'Resolving http-proxy.example.com...' && (echo 'Proxy is configured properly for HTTP' && exit 0)
-  - /bin/bash -l -c '/usr/bin/wget https://www.google.com/' 2>&1 | grep 'Resolving https-proxy.example.com...' && (echo 'Proxy is configured properly for HTTPS' && exit 0)
-  - /bin/bash -l -c '/usr/bin/wget ftp://ftp.linux.cz/' 2>&1 | grep 'Resolving ftp-proxy.example.com...' && (echo 'Proxy is configured properly for FTP' && exit 0)
-  - /bin/bash -l -c '/usr/bin/wget http://www.example.com/' && (echo 'Connections are not using proxy configuration for $no_proxy' && exit 0)
+  - /bin/bash -l -c '/usr/bin/wget --inet4-only http://www.google.com/' 2>&1 | grep 'Resolving http-proxy.example.com...' && (echo "*** Proxy is configured properly for HTTP." && exit 0)
+  - /bin/bash -l -c '/usr/bin/wget --inet4-only https://www.google.com/' 2>&1 | grep 'Resolving https-proxy.example.com...' && (echo "*** Proxy is configured properly for HTTPS." && exit 0)
+  - /bin/bash -l -c '/usr/bin/wget --inet4-only ftp://ftp.linux.cz/' 2>&1 | grep 'Resolving ftp-proxy.example.com...' && (echo "*** Proxy is configured properly for FTP." && exit 0)
+  - /bin/bash -l -c '/usr/bin/wget --inet4-only http://www.example.com/' && (echo "*** Connections are not using proxy configuration for ${no_proxy}." && exit 0)
