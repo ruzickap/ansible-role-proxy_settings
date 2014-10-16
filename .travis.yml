@@ -32,7 +32,7 @@ script:
   - cat /etc/environment
     
   # Check if the wget is using the proxy form the variables
-  - bash -l -c 'wget http://www.google.com/' 2>&1 | grep 'Resolving http-proxy.example.com...' && (echo 'Proxy is configured properly for: HTTP' && exit 0)
-  - bash -l -c 'wget https://www.google.com/' 2>&1 | grep 'Resolving https-proxy.example.com...' && (echo 'Proxy is configured properly for: HTTPS' && exit 0)
-  - bash -l -c 'wget ftp://ftp.linux.cz/' 2>&1 | grep 'Resolving ftp-proxy.example.com...' && (echo 'Proxy is configured properly for: FTP' && exit 0)
-  - bash -l -c 'wget http://www.example.com/' && (echo 'Connections are not using proxy configuration for: $no_proxy' && exit 0)
+  - /bin/bash -l -c '/usr/bin/wget http://www.google.com/' 2>&1 | grep 'Resolving http-proxy.example.com...' && (echo 'Proxy is configured properly for HTTP' && exit 0)
+  - /bin/bash -l -c '/usr/bin/wget https://www.google.com/' 2>&1 | grep 'Resolving https-proxy.example.com...' && (echo 'Proxy is configured properly for HTTPS' && exit 0)
+  - /bin/bash -l -c '/usr/bin/wget ftp://ftp.linux.cz/' 2>&1 | grep 'Resolving ftp-proxy.example.com...' && (echo 'Proxy is configured properly for FTP' && exit 0)
+  - /bin/bash -l -c '/usr/bin/wget http://www.example.com/' && (echo 'Connections are not using proxy configuration for $no_proxy' && exit 0)
