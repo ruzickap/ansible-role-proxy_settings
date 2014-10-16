@@ -1,7 +1,15 @@
 #
 # {{ ansible_managed }}
 #
+{% if proxy_http_proxy is defined %}
 export http_proxy="{{ proxy_http_proxy }}"
+{% endif %}
+{% if proxy_ftp_proxy is defined %}
 export ftp_proxy="{{ proxy_ftp_proxy }}"
+{% endif %}
+{% if proxy_https_proxy is defined %}
 export https_proxy="{{ proxy_https_proxy }}"
+{% endif %}
+{% if proxy_no_proxy is defined %}
 export no_proxy="{{ proxy_no_proxy }}"
+{% endif %}

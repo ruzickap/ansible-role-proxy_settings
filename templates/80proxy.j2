@@ -1,6 +1,12 @@
 #
 # {{ ansible_managed }}
 #
+{% if proxy_http_proxy is defined %}
 Acquire::http::proxy "{{ proxy_http_proxy }}";
+{% endif %}
+{% if proxy_ftp_proxy is defined %}
 Acquire::ftp::proxy "{{ proxy_ftp_proxy }}";
+{% endif %}
+{% if proxy_https_proxy is defined %}
 Acquire::https::proxy "{{ proxy_https_proxy }}";
+{% endif %}
