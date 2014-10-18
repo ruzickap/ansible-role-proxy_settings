@@ -1,35 +1,35 @@
 ---
-# tasks file for proxy
+# tasks file for proxy_settings
 
-- name: Configure proxy for OS (/etc/environment)
+- name: Configure proxy settings for OS (/etc/environment)
   template: src=environment.j2 dest=/etc/environment
   tags: proxy
 
-- name: Configure proxy for OS (/etc/profile.d/proxy.sh)
+- name: Configure proxy settings for OS (/etc/profile.d/proxy.sh)
   template: src=proxy.sh.j2 dest=/etc/profile.d/proxy.sh
   tags: proxy
 
-- name: Configure proxy for yum
-  lineinfile: dest=/etc/yum.conf regexp='^proxy' line="proxy={{ proxy_yum_proxy }}"
+- name: Configure proxy settings for yum
+  lineinfile: dest=/etc/yum.conf regexp='^proxy' line="proxy={{ proxy_settings_yum_proxy }}"
   tags: proxy
-  when: ansible_os_family == 'RedHat' and proxy_yum_proxy is defined
+  when: ansible_os_family == 'RedHat' and proxy_settings_yum_proxy is defined
 
 - name: Configure proxy_username for yum
-  lineinfile: dest=/etc/yum.conf regexp='^proxy_username' line="proxy_username={{ proxy_yum_proxy_username }}"
+  lineinfile: dest=/etc/yum.conf regexp='^proxy_username' line="proxy_username={{ proxy_settings_yum_proxy_username }}"
   tags: proxy
-  when: ansible_os_family == 'RedHat' and yum_proxy_username is defined
+  when: ansible_os_family == 'RedHat' and proxy_settings_yum_proxy_username is defined
 
 - name: Configure proxy_password for yum
-  lineinfile: dest=/etc/yum.conf regexp='^proxy_password' line="proxy_password={{ proxy_yum_proxy_password }}"
+  lineinfile: dest=/etc/yum.conf regexp='^proxy_password' line="proxy_password={{ proxy_settings_yum_proxy_password }}"
   tags: proxy
-  when: ansible_os_family == 'RedHat' and yum_proxy_password is defined
+  when: ansible_os_family == 'RedHat' and proxy_settings_yum_proxy_password is defined
 
-- name: Configure proxy for apt-get/aptitude
+- name: Configure proxy settings for apt-get/aptitude
   template: src=80proxy.j2 dest=/etc/apt/apt.conf.d/80proxy
   tags: proxy
   when: ansible_os_family == 'Debian'
 
-- name: Configure proxy for Suse
+- name: Configure proxy settings for Suse
   template: src=proxy.j2 dest=/etc/sysconfig/proxy
   tags: proxy
   when: ansible_os_family == 'Suse'
