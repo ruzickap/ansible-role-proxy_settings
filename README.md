@@ -35,7 +35,7 @@ Including an example of how to use your role (for instance, with variables passe
 
     - hosts: servers
       roles:
-         - role: ruzickap.proxy_settings
+         - role: peru.proxy_settings
            proxy_settings_http_proxy: 'http://myuser:mypassword@px01.example.com:3128'
            proxy_settings_ftp_proxy: 'http://proxy.example.com:8080'
            proxy_settings_https_proxy: 'http://px01.example.com:3128'
