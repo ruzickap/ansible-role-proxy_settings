@@ -9,6 +9,22 @@
   template: src=proxy.sh.j2 dest=/etc/profile.d/proxy.sh
   tags: proxy
 
+- name: Check if wgetrc exists
+  stat: path=/etc/wgetrc
+  register: wgetrc
+  tags: proxy
+
+- name: Add proxy settings to wgetrc (if exists)
+  blockinfile:
+    dest: /etc/wgetrc
+    block: |
+      use_proxy = on
+      http_proxy = {{ proxy_settings_http_proxy }}
+      https_proxy = {{ proxy_settings_https_proxy }}
+      ftp_proxy = {{ proxy_settings_ftp_proxy }}
+  when: wgetrc.stat.exists
+  tags: proxy
+
 - name: Configure proxy settings for yum
   lineinfile: dest=/etc/yum.conf regexp='^proxy' line="proxy={{ proxy_settings_yum_proxy }}"
   tags: proxy
