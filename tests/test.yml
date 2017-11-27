@@ -2,7 +2,7 @@
 - hosts: localhost
   remote_user: root
   roles:
-    - ansible-role-proxy_settings
+    - role: '../../.'
   vars:
     - proxy_settings_http_proxy: 'http://myuser:mypassword@http-proxy.example.com:3128'
     - proxy_settings_ftp_proxy: 'http://ftp-proxy.example.com:8080'

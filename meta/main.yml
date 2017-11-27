@@ -7,25 +7,28 @@ galaxy_info:
   platforms:
   - name: EL
     versions:
-    - all
+      - all
   - name: Fedora
     versions:
-    - all
+      - all
   - name: opensuse
     versions:
-    - all
+      - all
   - name: Ubuntu
     versions:
-    - all
+      - all
   - name: SLES
     versions:
-    - all
+      - all
+  - name: opensuse
+    versions:
+      - all
   - name: GenericLinux
     versions:
-    - all
+      - all
   - name: Debian
     versions:
-    - all
+      - all
   categories:
-  - networking
-  - system
+    - networking
+    - system
