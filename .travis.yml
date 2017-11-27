@@ -40,10 +40,6 @@ env:
       distribution_version: 42.2
       init: /usr/lib/systemd/systemd
       run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-    - distribution: ArchLinux
-      distribution_version: latest
-      init: /usr/lib/systemd/systemd
-      run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
 
 
 before_install:
