@@ -43,7 +43,8 @@ env:
 
 
 before_install:
-  # Pull container from Docker Hub.
+  - pip install ansible-lint
+  # Pull container from Docker Hub
   - 'docker pull ansiblecheck/ansiblecheck:${distribution,,}-${distribution_version}'
 
 script:
@@ -70,9 +71,7 @@ script:
     && (echo 'Idempotence test: pass' && exit 0)
     || (echo 'Idempotence test: fail' && exit 1)
 
-  # Run role test suite
-  # Add your own tests depending on your $ROLE
-  - echo "=======> Starting output tests"
+  - ansible-lint tasks/main.yml
 
 
 notifications:
