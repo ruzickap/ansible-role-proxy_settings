@@ -6,7 +6,7 @@
 
 Configure proxy settings for RedHat, Debian and Suse based OS.
 
-# Requirements
+## Requirements
 
 None
 

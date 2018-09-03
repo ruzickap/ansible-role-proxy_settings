@@ -43,7 +43,6 @@ env:
 
 
 before_install:
-  - pip install ansible-lint
   # Pull container from Docker Hub
   - 'docker pull ansiblecheck/ansiblecheck:${distribution,,}-${distribution_version}'
 
@@ -70,9 +69,6 @@ script:
     | grep -q 'changed=0.*failed=0'
     && (echo 'Idempotence test: pass' && exit 0)
     || (echo 'Idempotence test: fail' && exit 1)
-
-  - ansible-lint tasks/main.yml
-
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
