@@ -1,8 +1,7 @@
 # Ansible Role: proxy_settings
 
 [![Build Status](https://travis-ci.org/ruzickap/ansible-role-proxy_settings.svg?branch=master)](https://travis-ci.org/ruzickap/ansible-role-proxy_settings)
-[![Ansible Galaxy](http://img.shields.io/badge/galaxy-peru.proxy_settings-660198.svg)](https://galaxy.ansible.com/peru/proxy_settings/)
-[![Ansible Role](https://img.shields.io/ansible/role/d/1978.svg)](https://galaxy.ansible.com/peru/proxy_settings/)
+[![Ansible Galaxy](http://img.shields.io/badge/galaxy-ruzickap.proxy_settings-660198.svg)](https://galaxy.ansible.com/ruzickap/proxy_settings/)
 
 Configure proxy settings for RedHat, Debian and Suse based OS.
 
@@ -37,7 +36,7 @@ Including an example of how to use your role (for instance, with variables passe
 
     - hosts: servers
       roles:
-         - role: peru.proxy_settings
+         - role: ruzickap.proxy_settings
            proxy_settings_http_proxy: 'http://myuser:mypassword@px01.example.com:3128'
            proxy_settings_ftp_proxy: 'http://proxy.example.com:8080'
            proxy_settings_https_proxy: 'http://px01.example.com:3128'
