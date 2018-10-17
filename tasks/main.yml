@@ -47,23 +47,23 @@
 
 - name: Configure proxy settings for yum
   block:
-  - name: Configure proxy settings w/o id/pw for yum
-    blockinfile:
-      dest: /etc/yum.conf
-      block: |
-        proxy={{ proxy_settings_yum_proxy }}
-    tags: proxy
-    when: proxy_settings_yum_proxy_username is undefined
+    - name: Configure proxy settings w/o id/pw for yum
+      blockinfile:
+        dest: /etc/yum.conf
+        block: |
+          proxy={{ proxy_settings_yum_proxy }}
+      tags: proxy
+      when: proxy_settings_yum_proxy_username is undefined
 
-  - name: Configure proxy settings and id/pw for yum
-    blockinfile:
-      dest: /etc/yum.conf
-      block: |
-        proxy={{ proxy_settings_yum_proxy }}
-        proxy_username={{ proxy_settings_yum_proxy_username }}
-        proxy_password={{ proxy_settings_yum_proxy_password }}
-    tags: proxy
-    when: proxy_settings_yum_proxy_username is defined
+    - name: Configure proxy settings and id/pw for yum
+      blockinfile:
+        dest: /etc/yum.conf
+        block: |
+          proxy={{ proxy_settings_yum_proxy }}
+          proxy_username={{ proxy_settings_yum_proxy_username }}
+          proxy_password={{ proxy_settings_yum_proxy_password }}
+      tags: proxy
+      when: proxy_settings_yum_proxy_username is defined
   tags: proxy
   when: ansible_os_family == 'RedHat' and proxy_settings_yum_proxy is defined
 
