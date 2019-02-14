@@ -1,18 +1,53 @@
 ---
-language: python
-services: docker
+dist: xenial
 
-env:
-  matrix:
-    - MOLECULE_DISTRO: centos7
-    - MOLECULE_DISTRO: centos6
-    - MOLECULE_DISTRO: ubuntu1804
-    - MOLECULE_DISTRO: ubuntu1604
-    - MOLECULE_DISTRO: ubuntu1404
-    - MOLECULE_DISTRO: ubuntu1204
-    - MOLECULE_DISTRO: debian9
-    - MOLECULE_DISTRO: debian8
-    - MOLECULE_DISTRO: fedora27
+language: python
+
+services:
+  - docker
+
+node_js:
+  - "8"
+
+matrix:
+  include:
+    - name: "CentOS 7 Tests"
+      env:
+        - MOLECULE_DISTRO: centos7
+    - name: "CentOS 6 Tests"
+      env:
+        - MOLECULE_DISTRO: centos6
+    - name: "Ubuntu 18.04 Tests"
+      env:
+        - MOLECULE_DISTRO: ubuntu1804
+    - name: "Ubuntu 16.04 Tests"
+      env:
+        - MOLECULE_DISTRO: ubuntu1604
+    - name: "Ubuntu 14.04 Tests"
+      env:
+        - MOLECULE_DISTRO: ubuntu1404
+    - name: "Ubuntu 12.04 Tests"
+      env:
+        - MOLECULE_DISTRO: ubuntu1204
+    - name: "Debian 9 Tests"
+      env:
+        - MOLECULE_DISTRO: debian9
+    - name: "Debian 8 Tests"
+      env:
+        - MOLECULE_DISTRO: debian8
+    - name: "Fedora 27 Tests"
+      env:
+        - MOLECULE_DISTRO: fedora27
+    - name: "Markdown test"
+      install:
+        # Install markdownlint and markdown-link-check
+        - npm install -g markdownlint-cli markdown-link-check > /dev/null
+      script:
+        # Markdown check
+        - find . -name "*.md" -exec markdownlint {} \;
+
+        # Link Checks
+        - find . -name "*.md" -exec markdown-link-check {} \;
 
 install:
   # Install test dependencies.
