@@ -44,10 +44,10 @@ matrix:
         - npm install -g markdownlint-cli markdown-link-check > /dev/null
       script:
         # Markdown check
-        - find . -name "*.md" -exec markdownlint {} \;
+        - find . -name "*.md" -print0 | xargs -0 markdownlint
 
         # Link Checks
-        - find . -name "*.md" -exec markdown-link-check {} \;
+        - find . -name "*.md" -print0 | xargs -0 markdown-link-check --quiet
 
 install:
   # Install test dependencies.
