@@ -6,8 +6,7 @@ language: python
 services:
   - docker
 
-node_js:
-  - "8"
+node_js: 10
 
 matrix:
   include:
