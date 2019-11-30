@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.com/ruzickap/ansible-role-proxy_settings.svg?branch=master)](https://travis-ci.com/ruzickap/ansible-role-proxy_settings)
 [![Ansible Galaxy](http://img.shields.io/badge/galaxy-ruzickap.proxy_settings-660198.svg)](https://galaxy.ansible.com/ruzickap/proxy_settings/)
 
-Configure proxy settings for RedHat, Debian and Suse based OS.
+Configure proxy settings for Red Hat, Debian and Suse based OS.
 
 ## Requirements
 
@@ -11,7 +11,7 @@ None
 
 ## Role Variables
 
-Basic proxy setings.
+Basic proxy settings.
 
 ```yaml
 proxy_settings_http_proxy: 'http://myuser:mypassword@px01.example.com:3128'
@@ -20,7 +20,7 @@ proxy_settings_https_proxy: 'http://px01.example.com:3128'
 proxy_settings_no_proxy: 'example.com,192.168.122.1'
 ```
 
-You proxy settings if you are using RedHat based OS.
+You proxy settings if you are using Red Hat based OS.
 
 ```yaml
 proxy_settings_yum_proxy: 'http://proxysrv:8080'
