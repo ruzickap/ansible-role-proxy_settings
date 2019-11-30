@@ -1,0 +1,70 @@
+---
+name: "checks"
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  markdown-lint-check:
+    name: "Markdown lint check"
+    runs-on: ubuntu-18.04
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: "Install Node.js 12"
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+
+      - name: "Install markdownlint-cli"
+        run: npm install -g markdownlint-cli
+
+      - name: "Run markdownlint"
+        run: find . -path ./node_modules -prune -o -name "*.md" -print0 | xargs -t -0 markdownlint
+
+  markdown-spell-check:
+    name: "Markdown spell check"
+    runs-on: ubuntu-18.04
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: "Install Node.js 12"
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+
+      - name: "Install markdown-spellcheck"
+        run: npm install -g markdown-spellcheck
+
+      - name: "Run mdspell"
+        run: mdspell '**/*.md' '!**/node_modules/**/*.md' --ignore-numbers --ignore-acronyms --report --en-us
+
+  checks:
+    name: "Molecule checks"
+    runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        env:
+          - MOLECULE_DISTRO: centos7
+          - MOLECULE_DISTRO: centos6
+          - MOLECULE_DISTRO: ubuntu1804
+          - MOLECULE_DISTRO: ubuntu1604
+          - MOLECULE_DISTRO: ubuntu1404
+          - MOLECULE_DISTRO: debian9
+          - MOLECULE_DISTRO: debian8
+          - MOLECULE_DISTRO: fedora27
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: "Install Setuptools"
+        run: sudo apt-get install -y python3-setuptools
+
+      - name: "Install test dependencies"
+        run: sudo -H pip3 install molecule docker
+
+      - name: "Run tests"
+        run: molecule test
