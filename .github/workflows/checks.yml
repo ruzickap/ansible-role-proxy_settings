@@ -60,6 +60,9 @@ jobs:
     steps:
       - uses: actions/checkout@v1
 
+      - name: "Update repositories"
+        run: sudo apt update
+
       - name: "Install Setuptools"
         run: sudo apt-get install -y python3-setuptools
 
