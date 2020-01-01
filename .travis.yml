@@ -22,9 +22,6 @@ matrix:
     - name: "Ubuntu 16.04 Tests"
       env:
         - MOLECULE_DISTRO: ubuntu1604
-    - name: "Ubuntu 14.04 Tests"
-      env:
-        - MOLECULE_DISTRO: ubuntu1404
     - name: "Debian 9 Tests"
       env:
         - MOLECULE_DISTRO: debian9
