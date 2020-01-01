@@ -1,49 +1,48 @@
 ---
-name: "checks"
+name: checks
 
 on:
   push:
     branches: [master]
 
 jobs:
-  markdown-lint-check:
-    name: "Markdown lint check"
+  markdown-link-check:
     runs-on: ubuntu-18.04
-
     steps:
       - uses: actions/checkout@v2
 
-      - name: "Install Node.js 12"
-        uses: actions/setup-node@v1
+      - name: Link Checker
+        uses: gaurav-nelson/github-action-markdown-link-check@0.4.0
+
+  markdownlint-check:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: markdownlint-cli
+        uses: nosborn/github-action-markdown-cli@v1.1.1
         with:
-          node-version: 12.x
-
-      - name: "Install markdownlint-cli"
-        run: npm install -g markdownlint-cli
-
-      - name: "Run markdownlint"
-        run: find . -path ./node_modules -prune -o -name "*.md" -print0 | xargs -t -0 markdownlint
+          files: .
+          config_file: .markdownlint.yml
 
   markdown-spell-check:
-    name: "Markdown spell check"
     runs-on: ubuntu-18.04
-
     steps:
       - uses: actions/checkout@v2
 
-      - name: "Install Node.js 12"
+      - name: Install Node.js 12
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
 
-      - name: "Install markdown-spellcheck"
+      - name: Install markdown-spellcheck
         run: npm install -g markdown-spellcheck
 
-      - name: "Run mdspell"
-        run: mdspell '**/*.md' '!**/node_modules/**/*.md' --ignore-numbers --ignore-acronyms --report --en-us
+      - name: Run mdspell
+        run: find . -type f -name "*.md" -exec mdspell --ignore-numbers --ignore-acronyms --report --en-gb {} \;
 
   checks:
-    name: "Molecule checks"
+    name: Molecule checks
     runs-on: ubuntu-18.04
     strategy:
       matrix:
@@ -60,14 +59,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: "Update repositories"
+      - name: Update repositories
         run: sudo apt update
 
-      - name: "Install Setuptools"
+      - name: Install Setuptools
         run: sudo apt-get install -y python3-setuptools
 
-      - name: "Install test dependencies"
+      - name: Install test dependencies
         run: sudo -H pip3 install molecule docker
 
-      - name: "Run tests"
+      - name: Run tests
         run: molecule test
