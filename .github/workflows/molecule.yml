@@ -1,0 +1,37 @@
+---
+name: molecule
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  molecule-checks:
+    name: Molecule checks
+    runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        env:
+          - MOLECULE_DISTRO: centos7
+          - MOLECULE_DISTRO: centos6
+          - MOLECULE_DISTRO: ubuntu1804
+          - MOLECULE_DISTRO: ubuntu1604
+          - MOLECULE_DISTRO: ubuntu1404
+          - MOLECULE_DISTRO: debian9
+          - MOLECULE_DISTRO: debian8
+          - MOLECULE_DISTRO: fedora27
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Update repositories
+        run: sudo apt update
+
+      - name: Install Setuptools
+        run: sudo apt-get install -y python3-setuptools
+
+      - name: Install test dependencies
+        run: sudo -H pip3 install molecule docker
+
+      - name: Run tests
+        run: molecule test
