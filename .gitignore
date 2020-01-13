@@ -1,3 +1,6 @@
-*.retry
-*/__pycache__
-*.pyc
+# pre-commit config file
+.pre-commit-config.yaml
+
+# Python byte-compiled / optimized files
+*__pycache__/
+*.py[cod]
