@@ -1,0 +1,7 @@
+skip_list:
+  # Lines should be no longer than 160 chars
+  - 204
+  # Package installs should not use latest
+  - 403
+
+verbosity: 1
