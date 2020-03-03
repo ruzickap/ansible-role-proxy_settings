@@ -31,7 +31,7 @@ jobs:
         run: sudo apt-get install -y python3-setuptools
 
       - name: Install test dependencies
-        run: sudo -H pip3 install molecule docker
+        run: sudo -H pip3 install ansible-lint molecule docker yamllint
 
       - name: Run tests
         run: molecule test
