@@ -2,8 +2,11 @@
 name: molecule
 
 on:
+  pull_request:
+    types: [opened, synchronize]
   push:
-    branches: [master]
+    branches:
+      - master
 
 jobs:
   molecule-checks:
@@ -34,4 +37,7 @@ jobs:
         run: sudo -H pip3 install ansible-lint molecule docker yamllint
 
       - name: Run tests
+        env:
+          PY_COLORS: '1'
+          ANSIBLE_FORCE_COLOR: '1'
         run: molecule test
