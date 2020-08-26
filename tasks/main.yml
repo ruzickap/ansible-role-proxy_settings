@@ -5,6 +5,7 @@
   blockinfile:
     dest: /etc/environment
     create: yes
+    mode: u=rw,g=r,o=r
     block: |
       {% if proxy_settings_http_proxy is defined %}
       http_proxy="{{ proxy_settings_http_proxy }}"
@@ -28,6 +29,7 @@
   template:
     src: proxy.sh.j2
     dest: /etc/profile.d/proxy.sh
+    mode: u=rw,g=r,o=r
   tags: proxy
 
 - name: Check if wgetrc exists
@@ -39,6 +41,7 @@
 - name: Add proxy settings to wgetrc (if exists)
   blockinfile:
     dest: /etc/wgetrc
+    mode: u=rw,g=r,o=r
     block: |
       use_proxy = on
       http_proxy = {{ proxy_settings_http_proxy }}
@@ -53,6 +56,7 @@
     dest: /etc/dnf/dnf.conf
     regexp: '^proxy='
     line: "proxy={{ proxy_settings_yum_proxy }}"
+    mode: u=rw,g=r,o=r
   tags: proxy
   when: ansible_pkg_mgr == 'dnf' and proxy_settings_yum_proxy is defined
 
@@ -61,6 +65,7 @@
     dest: /etc/dnf/dnf.conf
     regexp: '^proxy_username='
     line: "proxy_username={{ proxy_settings_yum_proxy_username }}"
+    mode: u=rw,g=r,o=r
   tags: proxy
   when: ansible_pkg_mgr == 'dnf' and proxy_settings_yum_proxy_username is defined
 
@@ -69,6 +74,7 @@
     dest: /etc/dnf/dnf.conf
     regexp: '^proxy_password='
     line: "proxy_password={{ proxy_settings_yum_proxy_password }}"
+    mode: u=rw,g=r,o=r
   tags: proxy
   when: ansible_pkg_mgr == 'dnf' and proxy_settings_yum_proxy_password is defined
 
@@ -77,6 +83,7 @@
     dest: /etc/yum.conf
     regexp: '^proxy='
     line: "proxy={{ proxy_settings_yum_proxy }}"
+    mode: u=rw,g=r,o=r
   tags: proxy
   when: ansible_pkg_mgr == 'yum' and proxy_settings_yum_proxy is defined
 
@@ -85,6 +92,7 @@
     dest: /etc/yum.conf
     regexp: '^proxy_username='
     line: "proxy_username={{ proxy_settings_yum_proxy_username }}"
+    mode: u=rw,g=r,o=r
   tags: proxy
   when: ansible_pkg_mgr == 'yum' and proxy_settings_yum_proxy_username is defined
 
@@ -93,6 +101,7 @@
     dest: /etc/yum.conf
     regexp: '^proxy_password='
     line: "proxy_password={{ proxy_settings_yum_proxy_password }}"
+    mode: u=rw,g=r,o=r
   tags: proxy
   when: ansible_pkg_mgr == 'yum' and proxy_settings_yum_proxy_password is defined
 
@@ -100,6 +109,7 @@
   template:
     src: 80proxy.j2
     dest: /etc/apt/apt.conf.d/80proxy
+    mode: u=rw,g=r,o=r
   tags: proxy
   when: ansible_pkg_mgr == 'apt'
 
@@ -107,5 +117,6 @@
   template:
     src: proxy.j2
     dest: /etc/sysconfig/proxy
+    mode: u=rw,g=r,o=r
   tags: proxy
   when: ansible_pkg_mgr == 'zypper'
