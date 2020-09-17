@@ -1,5 +1,17 @@
 # Changelog
 
+## [v0.1.0](https://github.com/ruzickap/ansible-role-proxy/compare/v0.0.1...v0.1.0) (2020-09-17)
+
+- Fix mode in ansible playbooks [`#12`](https://github.com/ruzickap/ansible-role-proxy/pull/12)
+- Replace markdown link checker by action-my-markdown-link-checker [`#11`](https://github.com/ruzickap/ansible-role-proxy/pull/11)
+- Replace markdown linter [`#10`](https://github.com/ruzickap/ansible-role-proxy/pull/10)
+- Add super-linter [`#9`](https://github.com/ruzickap/ansible-role-proxy/pull/9)
+- Add super-linter + fix related issues [`#8`](https://github.com/ruzickap/ansible-role-proxy/pull/8)
+- Upgrade shellcheck to latest version [`#7`](https://github.com/ruzickap/ansible-role-proxy/pull/7)
+- Add colours to molecule and ansible [`#6`](https://github.com/ruzickap/ansible-role-proxy/pull/6)
+- Ignore CHANGELOG.md when doing markdownlint + mdspell [`#5`](https://github.com/ruzickap/ansible-role-proxy/pull/5)
+- CHANGELOG file update [`#4`](https://github.com/ruzickap/ansible-role-proxy/pull/4)
+
 ## v0.0.1 (2020-05-09)
 
 - fix idempotence [`#3`](https://github.com/ruzickap/ansible-role-proxy/pull/3)
@@ -30,7 +42,6 @@
 - TravisCI improvements [`1403354`](https://github.com/ruzickap/ansible-role-proxy/commit/14033545eca290fa379ac8a562d85a5b899fbbff)
 - License added [`e29f70e`](https://github.com/ruzickap/ansible-role-proxy/commit/e29f70e87faa3b869245e4f7c06e6db00ed63672)
 - Change from travis-ci.org -&gt; travis-ci.com [`05e8f1d`](https://github.com/ruzickap/ansible-role-proxy/commit/05e8f1d234d9e2096d6bf1d7345e6e897949aa62)
-- Merge branch 'master' of github.com:ruzickap/ansible-role-proxy [`e5a5ffd`](https://github.com/ruzickap/ansible-role-proxy/commit/e5a5ffd6fe2178675a7c63db398c8bbd8a0b03f0)
 - Moving to Molecule testing [`d394991`](https://github.com/ruzickap/ansible-role-proxy/commit/d394991cb3546b19fe07b155d12f7acf04c5e5a5)
 - Small fix [`de73af8`](https://github.com/ruzickap/ansible-role-proxy/commit/de73af838a63a714ed1f2ed73d0f7d050723feeb)
 - ansible-lint added [`4d9d31c`](https://github.com/ruzickap/ansible-role-proxy/commit/4d9d31c6a0cb6b94a68e44459ab16fa0525a5135)
