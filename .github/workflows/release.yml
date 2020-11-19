@@ -21,20 +21,20 @@ jobs:
     name: Release
     runs-on: ubuntu-latest
     steps:
-      - name: Check out the codebase.
+      - name: Check out the codebase
         uses: actions/checkout@v2
         with:
           path: 'ruzickap.proxy_settings'
 
-      - name: Set up Python 3.
+      - name: Set up Python 3
         uses: actions/setup-python@v2
         with:
           python-version: '3.x'
 
-      - name: Install Ansible.
+      - name: Install Ansible
         run: pip3 install ansible-base
 
-      - name: Trigger a new import on Galaxy.
+      - name: Trigger a new import on Galaxy
         run: |
-          ansible-galaxy role import
+          ansible-galaxy role import \
             --api-key ${{ secrets.GALAXY_API_KEY }} ${GITHUB_REPOSITORY%/*} ${GITHUB_REPOSITORY##*/}
