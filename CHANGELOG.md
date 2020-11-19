@@ -1,5 +1,11 @@
 # Changelog
 
+## [v0.1.1](https://github.com/ruzickap/ansible-role-proxy/compare/v0.1.0...v0.1.1) (2020-11-19)
+
+- Fix CI [`#15`](https://github.com/ruzickap/ansible-role-proxy/pull/15)
+- Guard variable references in wgetrc text [`#14`](https://github.com/ruzickap/ansible-role-proxy/pull/14)
+- CHANGELOG file update [`#13`](https://github.com/ruzickap/ansible-role-proxy/pull/13)
+
 ## [v0.1.0](https://github.com/ruzickap/ansible-role-proxy/compare/v0.0.1...v0.1.0) (2020-09-17)
 
 - Fix mode in ansible playbooks [`#12`](https://github.com/ruzickap/ansible-role-proxy/pull/12)
