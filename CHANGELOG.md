@@ -1,5 +1,10 @@
 # Changelog
 
+## [v0.1.2](https://github.com/ruzickap/ansible-role-proxy/compare/v0.1.1...v0.1.2) (2020-11-19)
+
+- Fix CD [`#17`](https://github.com/ruzickap/ansible-role-proxy/pull/17)
+- CHANGELOG file update [`#16`](https://github.com/ruzickap/ansible-role-proxy/pull/16)
+
 ## [v0.1.1](https://github.com/ruzickap/ansible-role-proxy/compare/v0.1.0...v0.1.1) (2020-11-19)
 
 - Fix CI [`#15`](https://github.com/ruzickap/ansible-role-proxy/pull/15)
