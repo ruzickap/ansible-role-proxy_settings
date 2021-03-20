@@ -8,36 +8,43 @@ on:
     branches:
       - master
 
+defaults:
+  run:
+    working-directory: 'ansible-role-proxy_settings'
+
 jobs:
   molecule-checks:
     name: Molecule checks
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        env:
-          - MOLECULE_DISTRO: centos7
-          - MOLECULE_DISTRO: centos6
-          - MOLECULE_DISTRO: ubuntu1804
-          - MOLECULE_DISTRO: ubuntu1604
-          - MOLECULE_DISTRO: ubuntu1404
-          - MOLECULE_DISTRO: debian9
-          - MOLECULE_DISTRO: debian8
-          - MOLECULE_DISTRO: fedora27
+        distro:
+          - centos8
+          - centos7
+          - centos6
+          - ubuntu2004
+          - ubuntu1804
+          - ubuntu1604
+          - debian10
+          - debian9
+          - fedora33
 
     steps:
       - uses: actions/checkout@v2
+        with:
+          path: 'ansible-role-proxy_settings'
 
-      - name: Update repositories
-        run: sudo apt update
-
-      - name: Install Setuptools
-        run: sudo apt-get install -y python3-setuptools
+      - name: Set up Python 3.
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
 
       - name: Install test dependencies
-        run: sudo -H pip3 install ansible-lint molecule[docker] docker yamllint
+        run: pip3 install ansible molecule[docker] docker
 
       - name: Run tests
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
+          MOLECULE_DISTRO: ${{ matrix.distro }}
         run: molecule test
