@@ -21,4 +21,4 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: yamllint
-        uses: ibiqlik/action-yamllint@v1
+        uses: ibiqlik/action-yamllint@v3
