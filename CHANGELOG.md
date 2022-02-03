@@ -1,22 +1,25 @@
 # Changelog
 
+## [v0.1.4](https://github.com/ruzickap/ansible-role-proxy_settings/compare/v0.1.3...v0.1.4)
+
+- Move from master to main [`#25`](https://github.com/ruzickap/ansible-role-proxy_settings/pull/25)
+- Use super-linter:slim [`#24`](https://github.com/ruzickap/ansible-role-proxy_settings/pull/24)
+- Upgrade GH Actions versions [`#23`](https://github.com/ruzickap/ansible-role-proxy_settings/pull/23)
+
 ## [v0.1.3](https://github.com/ruzickap/ansible-role-proxy_settings/compare/v0.1.2...v0.1.3) (2021-03-26)
 
 - Add systemd DefaultEnvironment [`#21`](https://github.com/ruzickap/ansible-role-proxy_settings/pull/21)
 - Fix tests [`#20`](https://github.com/ruzickap/ansible-role-proxy_settings/pull/20)
 - Fix CHANGELOG.md [`#19`](https://github.com/ruzickap/ansible-role-proxy_settings/pull/19)
-- CHANGELOG file update [`#18`](https://github.com/ruzickap/ansible-role-proxy_settings/pull/18)
 
 ## [v0.1.2](https://github.com/ruzickap/ansible-role-proxy_settings/compare/v0.1.1...v0.1.2) (2020-11-19)
 
 - Fix CD [`#17`](https://github.com/ruzickap/ansible-role-proxy_settings/pull/17)
-- CHANGELOG file update [`#16`](https://github.com/ruzickap/ansible-role-proxy_settings/pull/16)
 
 ## [v0.1.1](https://github.com/ruzickap/ansible-role-proxy_settings/compare/v0.1.0...v0.1.1) (2020-11-19)
 
 - Fix CI [`#15`](https://github.com/ruzickap/ansible-role-proxy_settings/pull/15)
 - Guard variable references in wgetrc text [`#14`](https://github.com/ruzickap/ansible-role-proxy_settings/pull/14)
-- CHANGELOG file update [`#13`](https://github.com/ruzickap/ansible-role-proxy_settings/pull/13)
 
 ## [v0.1.0](https://github.com/ruzickap/ansible-role-proxy_settings/compare/v0.0.1...v0.1.0) (2020-09-17)
 
@@ -28,7 +31,6 @@
 - Upgrade shellcheck to latest version [`#7`](https://github.com/ruzickap/ansible-role-proxy_settings/pull/7)
 - Add colours to molecule and ansible [`#6`](https://github.com/ruzickap/ansible-role-proxy_settings/pull/6)
 - Ignore CHANGELOG.md when doing markdownlint + mdspell [`#5`](https://github.com/ruzickap/ansible-role-proxy_settings/pull/5)
-- CHANGELOG file update [`#4`](https://github.com/ruzickap/ansible-role-proxy_settings/pull/4)
 
 ## v0.0.1 (2020-05-09)
 
