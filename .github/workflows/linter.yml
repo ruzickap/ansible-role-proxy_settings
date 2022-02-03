@@ -17,7 +17,7 @@ name: Lint Code Base
 on:
   push:
     branches-ignore:
-      - 'master'
+      - main
 
 ###############
 # Set the Job #
@@ -46,3 +46,4 @@ jobs:
         uses: docker://ghcr.io/github/super-linter:slim-v4
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FILTER_REGEX_EXCLUDE: CHANGELOG.md

@@ -1,6 +1,5 @@
 # Ansible Role: proxy_settings
 
-[![Build Status](https://travis-ci.com/ruzickap/ansible-role-proxy_settings.svg?branch=master)](https://travis-ci.com/ruzickap/ansible-role-proxy_settings)
 [![Ansible Galaxy](http://img.shields.io/badge/galaxy-ruzickap.proxy_settings-660198.svg)](https://galaxy.ansible.com/ruzickap/proxy_settings/)
 
 Configure proxy settings for Red Hat, Debian and Suse based OS.

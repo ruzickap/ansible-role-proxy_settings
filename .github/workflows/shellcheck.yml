@@ -8,7 +8,7 @@ on:
       - .github/workflows/shellcheck.yml
   push:
     branches:
-      - master
+      - main
     paths:
       - '**.sh'
       - .github/workflows/shellcheck.yml
@@ -20,4 +20,4 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Lint check
-        uses: azohra/shell-linter@v0.4.0
+        uses: azohra/shell-linter@v0.6.0
