@@ -1,5 +1,7 @@
 ---
 galaxy_info:
+  namespace: ruzickap
+  role_name: proxy_settings
   author: Petr Ruzicka
   description: Ansible role to configure proxy settings for Linux based systems
 
