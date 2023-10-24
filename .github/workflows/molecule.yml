@@ -20,11 +20,8 @@ jobs:
       matrix:
         distro:
           - centos8
-          - centos7
-          - centos6
           - ubuntu2004
           - ubuntu1804
-          - ubuntu1604
           - debian10
           - debian9
           - fedora33
@@ -40,7 +37,7 @@ jobs:
           python-version: '3.x'
 
       - name: Install test dependencies
-        run: pip3 install ansible molecule[docker] docker
+        run: pip3 install ansible molecule-plugins[docker] docker
 
       - name: Run tests
         env:
