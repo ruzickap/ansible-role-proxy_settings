@@ -13,10 +13,6 @@ on:
     types:
       - published
 
-defaults:
-  run:
-    working-directory: "ruzickap.proxy_settings"
-
 permissions: read-all
 
 jobs:
@@ -27,7 +23,7 @@ jobs:
       - name: Check out the codebase
         uses: actions/checkout@v4
         with:
-          path: "ruzickap.proxy_settings"
+          path: ${{ github.event.repository.name }}
 
       - name: Set up Python 3
         uses: actions/setup-python@v5
@@ -39,5 +35,6 @@ jobs:
 
       - name: Trigger a new import on Galaxy
         run: |
+          cd "${GITHUB_REPOSITORY#*/}"
           ansible-galaxy role import \
             --api-key "${{ secrets.GALAXY_API_KEY }}" "${GITHUB_REPOSITORY%/*}" "${GITHUB_REPOSITORY##*/}"

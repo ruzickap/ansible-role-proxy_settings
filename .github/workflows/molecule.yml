@@ -8,10 +8,6 @@ on:
     branches:
       - main
 
-defaults:
-  run:
-    working-directory: ${{ github.event.repository.name }}
-
 permissions: read-all
 
 jobs:
@@ -47,4 +43,6 @@ jobs:
           PY_COLORS: "1"
           ANSIBLE_FORCE_COLOR: "1"
           MOLECULE_DISTRO: ${{ matrix.distro }}
-        run: molecule test
+        run: |
+          cd "${GITHUB_REPOSITORY#*/}"
+          molecule test
