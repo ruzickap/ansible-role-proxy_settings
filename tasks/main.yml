@@ -85,7 +85,7 @@
 - name: Configure proxy settings for dnf
   lineinfile:
     dest: /etc/dnf/dnf.conf
-    regexp: '^proxy='
+    regexp: "^proxy="
     line: "proxy={{ proxy_settings_yum_proxy }}"
     mode: u=rw,g=r,o=r
   tags: proxy
@@ -94,7 +94,7 @@
 - name: Configure proxy_username for dnf
   lineinfile:
     dest: /etc/dnf/dnf.conf
-    regexp: '^proxy_username='
+    regexp: "^proxy_username="
     line: "proxy_username={{ proxy_settings_yum_proxy_username }}"
     mode: u=rw,g=r,o=r
   tags: proxy
@@ -103,7 +103,7 @@
 - name: Configure proxy_password for dnf
   lineinfile:
     dest: /etc/dnf/dnf.conf
-    regexp: '^proxy_password='
+    regexp: "^proxy_password="
     line: "proxy_password={{ proxy_settings_yum_proxy_password }}"
     mode: u=rw,g=r,o=r
   tags: proxy
@@ -112,7 +112,7 @@
 - name: Configure proxy settings for yum
   lineinfile:
     dest: /etc/yum.conf
-    regexp: '^proxy='
+    regexp: "^proxy="
     line: "proxy={{ proxy_settings_yum_proxy }}"
     mode: u=rw,g=r,o=r
   tags: proxy
@@ -121,7 +121,7 @@
 - name: Configure proxy_username for yum
   lineinfile:
     dest: /etc/yum.conf
-    regexp: '^proxy_username='
+    regexp: "^proxy_username="
     line: "proxy_username={{ proxy_settings_yum_proxy_username }}"
     mode: u=rw,g=r,o=r
   tags: proxy
@@ -130,7 +130,7 @@
 - name: Configure proxy_password for yum
   lineinfile:
     dest: /etc/yum.conf
-    regexp: '^proxy_password='
+    regexp: "^proxy_password="
     line: "proxy_password={{ proxy_settings_yum_proxy_password }}"
     mode: u=rw,g=r,o=r
   tags: proxy

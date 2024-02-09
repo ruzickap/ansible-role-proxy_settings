@@ -10,7 +10,9 @@ on:
 
 defaults:
   run:
-    working-directory: 'ansible-role-proxy_settings'
+    working-directory: ${{ github.event.repository.name }}
+
+permissions: read-all
 
 jobs:
   molecule-checks:
@@ -20,6 +22,7 @@ jobs:
       matrix:
         distro:
           - centos8
+          - ubuntu2204
           - ubuntu2004
           - ubuntu1804
           - debian10
@@ -27,21 +30,21 @@ jobs:
           - fedora33
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
         with:
-          path: 'ansible-role-proxy_settings'
+          path: ${{ github.event.repository.name }}
 
       - name: Set up Python 3.
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@0a5c61591373683505ea898e09a3ea4f39ef2b9c # v5.0.0
         with:
-          python-version: '3.x'
+          python-version: "3.x"
 
       - name: Install test dependencies
         run: pip3 install ansible molecule-plugins[docker] docker
 
       - name: Run tests
         env:
-          PY_COLORS: '1'
-          ANSIBLE_FORCE_COLOR: '1'
+          PY_COLORS: "1"
+          ANSIBLE_FORCE_COLOR: "1"
           MOLECULE_DISTRO: ${{ matrix.distro }}
         run: molecule test

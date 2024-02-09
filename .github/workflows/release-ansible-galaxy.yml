@@ -5,16 +5,19 @@
 # See: https://github.com/marketplace/actions/publish-ansible-role-to-galaxy
 # See: https://github.com/ansible/galaxy/issues/46
 
-name: Release
+name: release-ansible-galaxy
 
 on:
+  workflow_dispatch:
   release:
     types:
       - published
 
 defaults:
   run:
-    working-directory: 'ruzickap.proxy_settings'
+    working-directory: "ruzickap.proxy_settings"
+
+permissions: read-all
 
 jobs:
   release:
@@ -24,12 +27,12 @@ jobs:
       - name: Check out the codebase
         uses: actions/checkout@v4
         with:
-          path: 'ruzickap.proxy_settings'
+          path: "ruzickap.proxy_settings"
 
       - name: Set up Python 3
         uses: actions/setup-python@v5
         with:
-          python-version: '3.x'
+          python-version: "3.x"
 
       - name: Install Ansible
         run: pip3 install ansible-base
