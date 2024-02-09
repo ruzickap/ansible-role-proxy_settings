@@ -4,6 +4,3 @@
 # Python byte-compiled / optimized files
 *__pycache__/
 *.py[cod]
-
-# release-it configuration file
-.release-it.yml
