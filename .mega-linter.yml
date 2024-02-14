@@ -43,3 +43,5 @@ TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES:
 TYPESCRIPT_PRETTIER_ARGUMENTS: --html-whitespace-sensitivity=ignore
 
 VALIDATE_ALL_CODEBASE: true
+
+YAML_PRETTIER_ARGUMENTS: --no-error-on-unmatched-pattern
