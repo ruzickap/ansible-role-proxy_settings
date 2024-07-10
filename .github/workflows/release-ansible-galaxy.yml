@@ -34,7 +34,9 @@ jobs:
         run: pip3 install ansible-base
 
       - name: Trigger a new import on Galaxy
+        env:
+          GALAXY_API_KEY: ${{ secrets.GALAXY_API_KEY }}
         run: |
           cd "${GITHUB_REPOSITORY#*/}"
           ansible-galaxy role import \
-            --api-key "${{ secrets.GALAXY_API_KEY }}" "${GITHUB_REPOSITORY%/*}" "${GITHUB_REPOSITORY##*/}"
+            --api-key "${GALAXY_API_KEY}" "${GITHUB_REPOSITORY%/*}" "${GITHUB_REPOSITORY##*/}"
