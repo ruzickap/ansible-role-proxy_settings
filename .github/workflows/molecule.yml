@@ -2,12 +2,12 @@
 name: molecule
 
 on:
+  workflow_dispatch:
   pull_request:
     types: [opened, synchronize]
   push:
     branches:
       - main
-  workflow_dispatch:
 
 permissions: read-all
 
@@ -18,10 +18,8 @@ jobs:
     strategy:
       matrix:
         distro:
-          - centos8
           - ubuntu2204
           - ubuntu2004
-          - ubuntu1804
           - debian10
           - fedora33
 
