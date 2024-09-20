@@ -2,9 +2,9 @@
 # tasks file for proxy_settings
 
 - name: Configure proxy settings for OS (/etc/environment)
-  blockinfile:
+  ansible.builtin.blockinfile:
     dest: /etc/environment
-    create: yes
+    create: true
     mode: u=rw,g=r,o=r
     block: |
       {% if proxy_settings_http_proxy is defined %}
@@ -26,7 +26,7 @@
   tags: proxy
 
 - name: Configure proxy settings for OS (/etc/profile.d/proxy.sh)
-  template:
+  ansible.builtin.template:
     src: proxy.sh.j2
     dest: /etc/profile.d/proxy.sh
     mode: u=rw,g=r,o=r
@@ -41,7 +41,7 @@
 - name: Configure proxy settings for systemd services
   ansible.builtin.lineinfile:
     path: /etc/systemd/system.conf
-    regexp: "^DefaultEnvironment="
+    regexp: ^DefaultEnvironment=
     line: >-
       DefaultEnvironment={% if proxy_settings_ftp_proxy is defined %}"FTP_PROXY={{ proxy_settings_ftp_proxy }}"{% endif %}
       {% if proxy_settings_http_proxy is defined %}"HTTP_PROXY={{ proxy_settings_http_proxy }}"{% endif %}
@@ -52,17 +52,17 @@
       {% if proxy_settings_https_proxy is defined %}"https_proxy={{ proxy_settings_https_proxy }}"{% endif %}
       {% if proxy_settings_no_proxy is defined %}"no_proxy={{ proxy_settings_no_proxy }}"{% endif %}
   when: systemd_system_conf.stat.exists
-  notify: systemd daemon-reload
+  notify: Systemd daemon-reload
   tags: proxy
 
 - name: Check if wgetrc exists
-  stat:
+  ansible.builtin.stat:
     path: /etc/wgetrc
   register: wgetrc
   tags: proxy
 
 - name: Add proxy settings to wgetrc (if exists)
-  blockinfile:
+  ansible.builtin.blockinfile:
     dest: /etc/wgetrc
     mode: u=rw,g=r,o=r
     block: |
@@ -83,61 +83,61 @@
   tags: proxy
 
 - name: Configure proxy settings for dnf
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: /etc/dnf/dnf.conf
-    regexp: "^proxy="
-    line: "proxy={{ proxy_settings_yum_proxy }}"
+    regexp: ^proxy=
+    line: proxy={{ proxy_settings_yum_proxy }}
     mode: u=rw,g=r,o=r
   tags: proxy
   when: ansible_pkg_mgr == 'dnf' and proxy_settings_yum_proxy is defined
 
 - name: Configure proxy_username for dnf
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: /etc/dnf/dnf.conf
-    regexp: "^proxy_username="
-    line: "proxy_username={{ proxy_settings_yum_proxy_username }}"
+    regexp: ^proxy_username=
+    line: proxy_username={{ proxy_settings_yum_proxy_username }}
     mode: u=rw,g=r,o=r
   tags: proxy
   when: ansible_pkg_mgr == 'dnf' and proxy_settings_yum_proxy_username is defined
 
 - name: Configure proxy_password for dnf
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: /etc/dnf/dnf.conf
-    regexp: "^proxy_password="
-    line: "proxy_password={{ proxy_settings_yum_proxy_password }}"
+    regexp: ^proxy_password=
+    line: proxy_password={{ proxy_settings_yum_proxy_password }}
     mode: u=rw,g=r,o=r
   tags: proxy
   when: ansible_pkg_mgr == 'dnf' and proxy_settings_yum_proxy_password is defined
 
 - name: Configure proxy settings for yum
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: /etc/yum.conf
-    regexp: "^proxy="
-    line: "proxy={{ proxy_settings_yum_proxy }}"
+    regexp: ^proxy=
+    line: proxy={{ proxy_settings_yum_proxy }}
     mode: u=rw,g=r,o=r
   tags: proxy
   when: ansible_pkg_mgr == 'yum' and proxy_settings_yum_proxy is defined
 
 - name: Configure proxy_username for yum
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: /etc/yum.conf
-    regexp: "^proxy_username="
-    line: "proxy_username={{ proxy_settings_yum_proxy_username }}"
+    regexp: ^proxy_username=
+    line: proxy_username={{ proxy_settings_yum_proxy_username }}
     mode: u=rw,g=r,o=r
   tags: proxy
   when: ansible_pkg_mgr == 'yum' and proxy_settings_yum_proxy_username is defined
 
 - name: Configure proxy_password for yum
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: /etc/yum.conf
-    regexp: "^proxy_password="
-    line: "proxy_password={{ proxy_settings_yum_proxy_password }}"
+    regexp: ^proxy_password=
+    line: proxy_password={{ proxy_settings_yum_proxy_password }}
     mode: u=rw,g=r,o=r
   tags: proxy
   when: ansible_pkg_mgr == 'yum' and proxy_settings_yum_proxy_password is defined
 
 - name: Configure proxy settings for apt-get/aptitude
-  template:
+  ansible.builtin.template:
     src: 80proxy.j2
     dest: /etc/apt/apt.conf.d/80proxy
     mode: u=rw,g=r,o=r
@@ -145,7 +145,7 @@
   when: ansible_pkg_mgr == 'apt'
 
 - name: Configure proxy settings for Suse
-  template:
+  ansible.builtin.template:
     src: proxy.j2
     dest: /etc/sysconfig/proxy
     mode: u=rw,g=r,o=r
