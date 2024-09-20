@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.2.0](https://github.com/ruzickap/ansible-role-proxy_settings/compare/v0.1.4...v0.2.0) (2024-09-20)
+
+
+### Features
+
+* add GitHub default templates ([#49](https://github.com/ruzickap/ansible-role-proxy_settings/issues/49)) ([3451d7e](https://github.com/ruzickap/ansible-role-proxy_settings/commit/3451d7e036a33b6f42e60269371458a0bae721b2))
+* **gh_actions:** replace stale + add commitlint ([9827349](https://github.com/ruzickap/ansible-role-proxy_settings/commit/9827349f78567d2f541711b0d215108bc56a6bb4))
+* **gh-actions:** add lint-pr-title ([59ba77f](https://github.com/ruzickap/ansible-role-proxy_settings/commit/59ba77fde0cec018eeafc6ea14cbe5ecb4ca7fdf))
+* **gh:** add default GitHub repo files ([#44](https://github.com/ruzickap/ansible-role-proxy_settings/issues/44)) ([2cd9dda](https://github.com/ruzickap/ansible-role-proxy_settings/commit/2cd9dda755dc68cac2d936446d9595f8f3e539ce))
+* **gh:** add default GitHub repo files ([#45](https://github.com/ruzickap/ansible-role-proxy_settings/issues/45)) ([f382558](https://github.com/ruzickap/ansible-role-proxy_settings/commit/f38255838a6d7179502f2feb0db515041c3c7f86))
+* **gha:** unify GHA - renovate, megalinter, markdown, and others ([a457157](https://github.com/ruzickap/ansible-role-proxy_settings/commit/a45715763eb1351fd6c72a49c0a154e7b4e0a249))
+
+
+### Bug Fixes
+
+* **squash:** Squash this ([20af240](https://github.com/ruzickap/ansible-role-proxy_settings/commit/20af2402026f4dd5cc2b48d1b89f07d3405e2f50))
+
 ## [v0.1.4](https://github.com/ruzickap/ansible-role-proxy_settings/compare/v0.1.3...v0.1.4)
 
 - Move from master to main [`#25`](https://github.com/ruzickap/ansible-role-proxy_settings/pull/25)
