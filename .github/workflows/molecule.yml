@@ -18,10 +18,10 @@ jobs:
     strategy:
       matrix:
         distro:
-          - ubuntu2204
-          - ubuntu2004
           - debian10
           - fedora33
+          - ubuntu2004
+          - ubuntu2204
 
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
@@ -34,7 +34,12 @@ jobs:
           python-version: 3.x
 
       - name: Install test dependencies
-        run: pip3 install ansible molecule-plugins[docker] docker
+        run: |
+          set -euxo pipefail
+          pip3 install ansible molecule-plugins[docker] docker
+          if [ -f "${GITHUB_REPOSITORY#*/}/requirements.yml" ]; then
+            ansible-galaxy install -r "${GITHUB_REPOSITORY#*/}/requirements.yml"
+          fi
 
       - name: Run tests
         env:

@@ -1,6 +1,9 @@
-# pre-commit config file
-.pre-commit-config.yaml
+# keep-sorted start newline_separated=yes
+*.py[cod]
 
 # Python byte-compiled / optimized files
 *__pycache__/
-*.py[cod]
+
+# pre-commit config file
+.pre-commit-config.yaml
+# keep-sorted end
