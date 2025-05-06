@@ -14,4 +14,4 @@
     proxy_settings_yum_proxy_password: "********"
 
   roles:
-    - role: ansible-role-proxy_settings
+    - role: ruzickap.proxy_settings
