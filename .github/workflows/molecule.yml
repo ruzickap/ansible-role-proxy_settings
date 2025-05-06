@@ -18,7 +18,6 @@ jobs:
     strategy:
       matrix:
         distro:
-          - debian10
           - fedora33
           - ubuntu2004
           - ubuntu2204

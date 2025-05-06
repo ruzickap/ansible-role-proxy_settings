@@ -1,6 +1,0 @@
----
-skip_list:
-  - package-latest
-  - yaml[comments]
-  - yaml[document-start]
-  - yaml[line-length]
