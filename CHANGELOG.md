@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.0](https://github.com/ruzickap/ansible-role-proxy_settings/compare/v0.2.0...v0.3.0) (2025-05-06)
+
+
+### Features
+
+* **gh:** add default github repo files ([#53](https://github.com/ruzickap/ansible-role-proxy_settings/issues/53)) ([a24eecf](https://github.com/ruzickap/ansible-role-proxy_settings/commit/a24eecfe5bafe23b5ee66fcc6d1cc92d2ab43997))
+* **gh:** add default github repo files ([#57](https://github.com/ruzickap/ansible-role-proxy_settings/issues/57)) ([02349a7](https://github.com/ruzickap/ansible-role-proxy_settings/commit/02349a78bc692ce778882750a8faf43ee519015c))
+
 ## [0.2.0](https://github.com/ruzickap/ansible-role-proxy_settings/compare/v0.1.4...v0.2.0) (2024-09-20)
 
 
